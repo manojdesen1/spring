@@ -1,0 +1,47 @@
+# private_instance.yml
+- hosts: private_ec2
+  become: true
+  vars:
+    mysql_root_password: "admin@123"
+    mysql_username: "cloudbankin"
+    mysql_user_password: "Cloud@1234"
+  tasks:
+    - name: Update package cache
+      apt:
+        update_cache: yes
+
+    - name: Upgrade packages
+      apt:
+        upgrade: yes
+
+    - name: Install MySQL Python package
+      apt:
+        name: python3-mysqldb
+        state: present
+
+    - name: Install MySQL server
+      apt:
+        name: mysql-server
+        state: present
+
+    - name: Ensure MySQL service is running
+      service:
+        name: mysql
+        state: started
+        enabled: yes
+
+    - name: Set MySQL root password
+      mysql_user:
+        name: root
+        password: "{{ mysql_root_password }}"
+        login_user: root
+        login_password: ""
+
+    - name: Create MySQL user
+      mysql_user:
+        name: "{{ mysql_username }}"
+        password: "{{ mysql_user_password }}"
+        priv: "*.*:ALL"
+        host: localhost
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
