@@ -560,8 +560,8 @@
                 <jpa.database>MYSQL</jpa.database>
                 <jdbc.driverClassName>com.mysql.cj.jdbc.Driver</jdbc.driverClassName>
                 <jdbc.url>jdbc:mysql://localhost:3306/petclinic?useUnicode=true</jdbc.url>
-                <jdbc.username>petclinic</jdbc.username>
-                <jdbc.password>petclinic</jdbc.password>
+                <jdbc.username>cloudbankin</jdbc.username>
+                <jdbc.password>Cloud@1234</jdbc.password>
             </properties>
             <dependencies>
                 <dependency>
