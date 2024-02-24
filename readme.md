@@ -1,3 +1,25 @@
+To summarize:
+
+Terraform Script: I have developed a Terraform script named terraform.tf, which facilitates the setup of the entire cloud infrastructure as outlined in the task.
+
+Ansible Playbooks: YAML playbooks have been created to execute the deployment process. The playbook for the application deployment is named public.yaml, while the one for the database is named private.yaml. Additionally, the inventory file hosts are provided to manage the hosts for deployment.
+
+Database Configuration: In adherence to the task requirements, I have configured MySQL on a private EC2 instance. MySQL credentials have been appropriately integrated into the pom.xml file.
+
+We can have environment based inventory file for multi environmental deployment 
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Spring PetClinic Sample Application
 
 [![Java CI with Maven](https://github.com/spring-petclinic/spring-framework-petclinic/actions/workflows/maven-build.yml/badge.svg)](https://github.com/spring-petclinic/spring-framework-petclinic/actions/workflows/maven-build.yml)
