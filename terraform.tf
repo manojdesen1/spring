@@ -126,7 +126,7 @@ resource "aws_route_table" "pubroute" {
     ip_protocol       = "-1" # semantically equivalent to all ports
   }
   resource "aws_instance" "public" {
-    ami           = "ami-03f4878755434977f"  # Update with your desired AMI ID
+    ami           = "ami-03f4878755434977f"  
     instance_type = "t2.micro"
     subnet_id     = aws_subnet.pub.id
     security_groups = [aws_security_group.newtest.id]
@@ -138,7 +138,7 @@ resource "aws_route_table" "pubroute" {
     }
   }
   resource "aws_instance" "private" {
-    ami           = "ami-03f4878755434977f"  # Update with your desired AMI ID
+    ami           = "ami-03f4878755434977f"  
     instance_type = "t2.micro"
     subnet_id     = aws_subnet.priv.id
     security_groups = [aws_security_group.private.id]
