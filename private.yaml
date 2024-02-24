@@ -1,5 +1,5 @@
 # private_instance.yml
-- hosts: private_ec2
+- hosts: web1
   become: true
   vars:
     mysql_root_password: "admin@123"
