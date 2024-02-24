@@ -1,0 +1,39 @@
+# public_instance.yml
+- hosts: web2
+  become: true
+  tasks:
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Install Java
+      apt:
+        name: openjdk-17-jdk
+        state: present
+
+    - name: Install Maven
+      apt:
+        name: maven
+        state: present
+
+    - name: Clone Spring Boot application
+      git:
+        repo: https://github.com/manojdesen1/spring.git
+        dest: /var/www/html/new_app
+        force: yes
+
+    - name: Build Spring Boot application
+      command: mvn -f /var/www/html/new_app/pom.xml clean install
+      args:
+        chdir: /var/www/html/new_app/
+
+    - name: Ensure mvnw script has executable permission
+      file:
+        path: /var/www/html/new_app/mvnw
+        mode: "+x"
+
+    - name: Run Spring Boot application with Jetty
+      command: ./mvnw jetty:run-war
+      args:
+        chdir: /var/www/html/new_app/
